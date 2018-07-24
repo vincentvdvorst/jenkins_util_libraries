@@ -186,7 +186,7 @@ def functionalTests(scm, cookbookDirectory, currentBranch, cookbook) {
   }
 }
 
-def publish(scm, cookbookDirectory, currentBranch, cookbook, stableBranch) {
+def publish(scm, cookbookDirectory, currentBranch, stableBranch, cookbook) {
   if ( currentBranch == stableBranch ) {
     echo "Attempting upload of stable branch cookbook to Chef server."
     try{
