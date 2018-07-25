@@ -79,6 +79,21 @@ def fetch(scm, cookbookDirectory, currentBranch) {
   ])
 }
 
+String getNewVersion(scm, cookbookDirectory, currentBranch) {
+  fetch(scm, cookbookDirectory, currentBranch)
+  newVersion = new SemVer()
+  dir(cookbookDirectory) {
+    def metadataLines = readFile "metadata.rb"
+
+    for (line in metadataLines.split("\n")) {
+      if (line ==~ /^version.*/) {
+        newVersion.set(line.split(" ")[1].replace("\'", ""))
+      }
+    }
+  }
+  return newVersion.toString()
+}
+
 def versionCheck(scm, cookbookDirectory, currentBranch, cookbook) {
   echo "Checking if version is updated."
   try {
