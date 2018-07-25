@@ -220,7 +220,7 @@ def publish(scm, cookbookDirectory, currentBranch, stableBranch, cookbook) {
 }
 
 def updateGitTag(scm, cookbookDirectory, currentBranch) {
-  version = cookbookPipeline.getNewVersion(scm, cookbookDirectory, currentBranch)
+  version = getNewVersion(scm, cookbookDirectory, currentBranch)
   dir(cookbookDirectory) {
     credentialId = "16fab210-1259-4cb5-9acc-c2134ac32ea4"
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: credentialId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
