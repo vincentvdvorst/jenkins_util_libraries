@@ -134,10 +134,8 @@ def versionCheck(scm, cookbookDirectory, currentBranch, cookbook) {
     }
   }
   catch(err) {
-    echo "#######################"
-    echo "Build Failed"
-    echo "#######################"
     currentBuild.result = 'FAILED'
+    echo err.getMessage()
     error err.getMessage()
     throw err
   }
