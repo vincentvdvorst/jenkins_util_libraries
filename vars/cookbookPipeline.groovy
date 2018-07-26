@@ -175,11 +175,11 @@ def unitTests(scm, cookbookDirectory, currentBranch, cookbook) {
 
 def functionalTests(scm, cookbookDirectory, currentBranch, cookbook) {
   try {
-    fetch(scm, cookbookDirectory, currentBranch)
+    fetch(scm, cookbookDirectory, currentBranch)    
     dir(cookbookDirectory) {
       bat '''
         set KITCHEN_YAML=.kitchen.jenkins.yml
-        set KITCHEN_EC2_SSH_KEY_PATH=D:/kitchen/test.pem
+        set KITCHEN_EC2_SSH_KEY_PATH=D:/kitchen/jenkins_kitchen_key.pem
         kitchen verify
       '''
     }
