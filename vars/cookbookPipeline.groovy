@@ -179,6 +179,7 @@ def functionalTests(scm, cookbookDirectory, currentBranch, cookbook) {
     dir(cookbookDirectory) {
       bat '''
         set KITCHEN_YAML=.kitchen.jenkins.yml
+        set KITCHEN_EC2_SSH_KEY_PATH=D:/kitchen/jenkins_kitchen_key.pem
         kitchen verify
       '''
     }
